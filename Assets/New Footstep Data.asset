@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aade119b7cbb421b9b73ecb5ffd17bf3, type: 3}
+  m_Name: New Footstep Data
+  m_EditorClassIdentifier: 
+  defaultSound:
+    Guid:
+      Data1: -2043576914
+      Data2: 1333014888
+      Data3: 1918201222
+      Data4: -1396475865
+    Path: event:/Footstep
