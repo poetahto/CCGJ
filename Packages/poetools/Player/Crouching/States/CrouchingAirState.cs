@@ -20,11 +20,6 @@ namespace poetools.player.Player.Crouching.States
             var cur = Parent.SteadyBasePosition;
             cur.y = Mathf.Lerp(cur.y, Parent.RawCameraTransform.position.y - (Parent.Settings.cameraPercent * Parent.Settings.crouchHeight), Parent.Settings.crouchingSpeed * Time.deltaTime);
             Parent.SteadyBasePosition = cur;
-        }
-
-        public override void PhysicsTick()
-        {
-            base.PhysicsTick();
 
             if (Parent.IsGrounded)
                 Parent.TransitionTo(Parent.CrouchingGround);
@@ -37,6 +32,7 @@ namespace poetools.player.Player.Crouching.States
                     Parent.Parent.transform.position += amount;
                     Parent.SteadyBasePosition -= amount;
                     Parent.SmoothedCrouchPosition -= amount;
+                    Physics.SyncTransforms();
                     Parent.TransitionTo(Parent.Standing);
                 }
                 else if (Parent.CanStand && Parent.Cast(-Parent.Parent.up, float.PositiveInfinity, out RaycastHit info))
@@ -51,10 +47,17 @@ namespace poetools.player.Player.Crouching.States
                     Parent.RawCameraTransform.position = origPosT;
                     Parent.SteadyBasePosition = origPosS;
                     Parent.SmoothedCrouchPosition = origPosC;
+                    Physics.SyncTransforms();
 
                     Parent.TransitionTo(Parent.Standing);
                 }
             }
+        }
+
+        public override void PhysicsTick()
+        {
+            base.PhysicsTick();
+
         }
     }
 }
