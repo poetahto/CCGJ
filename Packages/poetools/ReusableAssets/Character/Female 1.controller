@@ -566,19 +566,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: grounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: crouching
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -895,18 +895,18 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: -3294710919411875191}
   m_StateMachineTransitions:
-  - first: {fileID: 5500400299574515596}
-    second:
-    - {fileID: -8844372280508918132}
   - first: {fileID: -5359512982755102697}
     second:
     - {fileID: 554401600660659355}
+  - first: {fileID: 5500400299574515596}
+    second:
+    - {fileID: -8844372280508918132}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 40, y: -100, z: 0}
+  m_AnyStatePosition: {x: -20, y: -80, z: 0}
   m_EntryPosition: {x: 290, y: -250, z: 0}
   m_ExitPosition: {x: 30, y: 60, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 7834377307579787468}
+  m_DefaultState: {fileID: 162032147201976777}
 --- !u!1109 &4888829291844384030
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -944,14 +944,14 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: -4865195541336946373}
   m_StateMachineTransitions:
-  - first: {fileID: -6756129366433122373}
-    second:
-    - {fileID: -5253708840221856534}
-    - {fileID: -3898488817523947195}
   - first: {fileID: -2436926196960508074}
     second:
     - {fileID: 8241936809164077954}
     - {fileID: -3042399044284452802}
+  - first: {fileID: -6756129366433122373}
+    second:
+    - {fileID: -5253708840221856534}
+    - {fileID: -3898488817523947195}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -100, y: 110, z: 0}
   m_EntryPosition: {x: 340, y: 80, z: 0}

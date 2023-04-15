@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac97d8871dd45a4a48fabc2ee497302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physics: {fileID: 2770660007547541408}
   downDirection: {x: 0, y: -1, z: 0}
   amount: 9.81
   idleGravity: 0

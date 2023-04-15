@@ -7,12 +7,27 @@ namespace DefaultNamespace
 {
     public class CCGJPlayerBody : NetworkBehaviour
     {
-        public Behaviour[] ownedOnlyBehaviors;
         public Renderer bodyRenderer;
+        public GameObject[] ownedObject;
+        public GameObject[] inhabitedObject;
 
         public override void OnNetworkSpawn()
         {
             DisableClientView();
+        }
+
+        public override void OnGainedOwnership()
+        {
+            foreach (var owned in ownedObject)
+                owned.SetActive(true);
+        }
+
+        public override void OnLostOwnership()
+        {
+            foreach (var owned in ownedObject)
+            {
+                owned.SetActive(false);
+            }
         }
 
         public void Inhabit(ulong client)
@@ -41,16 +56,16 @@ namespace DefaultNamespace
 
         private void EnableClientView()
         {
-            foreach (var behaviour in ownedOnlyBehaviors)
-                behaviour.enabled = true;
+            foreach (var inhabited in inhabitedObject)
+                inhabited.SetActive(true);
 
             bodyRenderer.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
         }
 
         private void DisableClientView()
         {
-            foreach (var behaviour in ownedOnlyBehaviors)
-                behaviour.enabled = false;
+            foreach (var inhabited in inhabitedObject)
+                inhabited.SetActive(false);
 
             bodyRenderer.shadowCastingMode = ShadowCastingMode.TwoSided;
         }
