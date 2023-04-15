@@ -14,16 +14,21 @@ namespace DefaultNamespace
         public UnityEvent onAccept;
         public UnityEvent onRelease;
 
+        public bool suckToCenter = true;
+
         public NetworkObject AcceptedObject { get; private set; }
 
         protected override void HandleCollisionEnter(GameObject obj)
         {
             if (obj.TryGetComponent(out NetworkObject netObj) && validObjects.Contains(netObj))
             {
-                var grav = netObj.GetComponentInChildren<Gravity>();
+                if (suckToCenter)
+                {
+                    var grav = netObj.GetComponentInChildren<Gravity>();
 
-                if (grav)
-                    grav.enabled = false;
+                    if (grav)
+                        grav.enabled = false;
+                }
 
                 AcceptedObject = netObj;
                 onAccept.Invoke();
@@ -34,10 +39,13 @@ namespace DefaultNamespace
         {
             if (obj.TryGetComponent(out NetworkObject netObj) && netObj == AcceptedObject)
             {
-                var grav = netObj.GetComponentInChildren<Gravity>();
+                if (suckToCenter)
+                {
+                    var grav = netObj.GetComponentInChildren<Gravity>();
 
-                if (grav)
-                    grav.enabled = true;
+                    if (grav)
+                        grav.enabled = true;
+                }
 
                 AcceptedObject = null;
                 onRelease.Invoke();
@@ -51,7 +59,7 @@ namespace DefaultNamespace
 
         private void FixedUpdate()
         {
-            if (AcceptedObject != null && AcceptedObject.IsOwner)
+            if (AcceptedObject != null && AcceptedObject.IsOwner && suckToCenter)
             {
                 // AcceptedObject.transform.position = Vector3.MoveTowards(AcceptedObject.transform.position,
                 //     transform.position, Time.deltaTime);
