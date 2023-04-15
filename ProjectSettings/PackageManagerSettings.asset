@@ -33,6 +33,7 @@ MonoBehaviour:
     m_Scopes:
     - com.codewriter.triinspector
     - com.openupm
+    - nl.elraccoone.tweens
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
@@ -41,6 +42,6 @@ MonoBehaviour:
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -842
+    m_UserModificationsInstanceId: -840
     m_OriginalInstanceId: -844
   m_LoadAssets: 0
