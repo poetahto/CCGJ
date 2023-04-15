@@ -59,7 +59,7 @@ namespace DefaultNamespace
 
         private void FixedUpdate()
         {
-            if (AcceptedObject != null && AcceptedObject.IsOwner && suckToCenter)
+            if (AcceptedObject != null && AcceptedObject.IsOwner && suckToCenter && AcceptedObject.TryGetComponent(out MovableObject mo) && !mo.IsHeld)
             {
                 // AcceptedObject.transform.position = Vector3.MoveTowards(AcceptedObject.transform.position,
                 //     transform.position, Time.deltaTime);

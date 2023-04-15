@@ -1,6 +1,7 @@
 ﻿using JetBrains.Annotations;
 using poetools.player.Player.Interaction;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DefaultNamespace
 {
@@ -11,6 +12,7 @@ namespace DefaultNamespace
         [SerializeField] private float maxSpeed = 10f;
         [SerializeField] private bool applyRotation = true;
         [SerializeField] private bool applyConstraintsWhileMoving = true;
+        [SerializeField] private UnityEvent onGrab;
 
         // The current position of this object
         private Transform _currentPosition;
@@ -20,6 +22,8 @@ namespace DefaultNamespace
 
         private Transform _cameraTransform;
         private bool _isHeld;
+
+        public bool IsHeld => _isHeld;
 
         // The position this object is trying to accelerate towards.
         public Transform TargetTransform { get; private set; }
@@ -74,6 +78,7 @@ namespace DefaultNamespace
                 Rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
             var target = grabber.GetComponentInChildren<MovingTarget>();
+            onGrab.Invoke();
 
             if (!target)
             {
