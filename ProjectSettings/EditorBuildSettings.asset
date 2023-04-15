@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Entrypoint.unity
     guid: 52787da092b922e40ab4944e7e8f3c64
   - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 5b5866d182866c24a8b8f016f20e6ad4
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

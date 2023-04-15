@@ -50,12 +50,6 @@ namespace poetools.Core
             _initialized = true;
             DontDestroyOnLoad(gameObject);
         }
-
-        private IEnumerator Start()
-        {
-            yield return null;
-            SceneManager.LoadScene(firstScene);
-        }
 #endif
     }
 }
