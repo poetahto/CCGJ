@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 23e93841d1032714ab00a85933e20c8f, type: 2}
-  stepDistance: 1
+  stepDistance: 2
   showDebug: 0
 --- !u!1 &4516426291479251370
 GameObject:

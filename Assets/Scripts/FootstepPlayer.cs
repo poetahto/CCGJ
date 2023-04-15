@@ -46,12 +46,12 @@ namespace DefaultNamespace
                     {
                         if (_groundCheck.ConnectedCollider.gameObject.HasAllTags(surfaceData.tag))
                         {
-                            RuntimeManager.PlayOneShot(surfaceData.sound);
+                            RuntimeManager.PlayOneShotAttached(surfaceData.sound, gameObject);
                             playedSound = true;
                         }
                     }
                     if (!playedSound)
-                        RuntimeManager.PlayOneShot(data.defaultSound);
+                        RuntimeManager.PlayOneShotAttached(data.defaultSound, gameObject);
 
                     // If we did, fire the event and reset elapsedDistance to 0
                     _elapsedDistance = 0;
