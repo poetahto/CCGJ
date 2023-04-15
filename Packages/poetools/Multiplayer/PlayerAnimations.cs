@@ -1,11 +1,12 @@
 ﻿using poetools.Core;
 using poetools.Core.Abstraction;
 using poetools.player.Player.Crouching;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace poetools.player.Player
 {
-    public class PlayerAnimations : MonoBehaviour
+    public class PlayerAnimations : NetworkBehaviour
     {
         [SerializeField] private Animator animator;
 
@@ -25,12 +26,15 @@ namespace poetools.player.Player
 
         private void Update()
         {
-            animator.SetBool(Grounded, _groundCheck.IsGrounded);
-            animator.SetBool(Crouching, _fpsCrouching.CrouchingLogic.IsCrouching);
+            if (IsOwner)
+            {
+                animator.SetBool(Grounded, _groundCheck.IsGrounded);
+                animator.SetBool(Crouching, _fpsCrouching.CrouchingLogic.IsCrouching);
 
-            var v = _physics.Velocity;
-            v.y = 0;
-            animator.SetFloat(Speed, v.magnitude);
+                var v = _physics.Velocity;
+                v.y = 0;
+                animator.SetFloat(Speed, v.magnitude);
+            }
         }
     }
 }

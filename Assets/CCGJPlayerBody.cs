@@ -1,4 +1,5 @@
-﻿using Unity.Netcode;
+﻿using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -22,8 +23,8 @@ namespace DefaultNamespace
 
         public void Free()
         {
-            NetworkObject.RemoveOwnership();
             FreeClientRpc(new ClientRpcParams(){Send = new ClientRpcSendParams{TargetClientIds = new []{OwnerClientId}}});
+            NetworkObject.RemoveOwnership();
         }
 
         [ClientRpc]
