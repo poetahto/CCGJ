@@ -17,6 +17,7 @@ namespace poetools.Multiplayer
 
         private async void Start()
         {
+#if UNITY_EDITOR
             var multiplayerController = GetComponent<MultiplayerController>();
             await Task.Delay(1000);
 
@@ -30,6 +31,7 @@ namespace poetools.Multiplayer
 
                 default: throw new ArgumentOutOfRangeException();
             }
+#endif
         }
     }
 }

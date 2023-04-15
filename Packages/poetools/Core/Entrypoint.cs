@@ -43,6 +43,10 @@ namespace poetools.Core
                 Application.Quit();
 #endif
             }
+            else
+            {
+                SceneManager.LoadScene(1);
+            }
         }
 
         private void Awake()

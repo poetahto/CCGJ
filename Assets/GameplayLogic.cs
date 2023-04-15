@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using poetools.Multiplayer;
-using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -10,16 +7,16 @@ namespace DefaultNamespace
     public class GameplayLogic : NetworkBehaviour
     {
         [SerializeField]
-        private List<NetworkObject> playerObjects;
+        private List<CCGJPlayerBody> playerObjects;
 
-        private Queue<NetworkObject> _availableObjects;
-        private Dictionary<ulong, NetworkObject> _usedObjects = new Dictionary<ulong, NetworkObject>();
+        private Queue<CCGJPlayerBody> _availableObjects;
+        private Dictionary<ulong, CCGJPlayerBody> _usedObjects = new Dictionary<ulong, CCGJPlayerBody>();
 
         public override void OnNetworkSpawn()
         {
             if (IsServer)
             {
-                _availableObjects = new Queue<NetworkObject>(playerObjects);
+                _availableObjects = new Queue<CCGJPlayerBody>(playerObjects);
 
                 NetworkManager.OnClientConnectedCallback += HandleClientConnected;
                 NetworkManager.OnClientDisconnectCallback += HandleClientDisconnected;
@@ -40,15 +37,31 @@ namespace DefaultNamespace
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.K))
-            {
-                var idxA = _cycle;
-                _cycle = (_cycle + 1) % 2;
-                var idxB = _cycle;
-                playerObjects[idxA].GetComponent<NetworkedPlayer>().OnLostOwnership();
+                SwapServerRpc();
+        }
 
-                playerObjects[idxB].GetComponent<NetworkedPlayer>().IsHostOwned = IsHost;
-                playerObjects[idxB].GetComponent<NetworkedPlayer>().OnGainedOwnership();
+        [ServerRpc(RequireOwnership = false)]
+        private void SwapServerRpc()
+        {
+            var idxA = _cycle;
+            _cycle = (_cycle + 1) % 2;
+            var idxB = _cycle;
+
+            var bodyA = playerObjects[idxA];
+            var bodyB = playerObjects[idxB];
+
+            var clientA = bodyA.OwnerClientId;
+            var clientB = bodyB.OwnerClientId;
+
+            bodyA.Free();
+            bodyB.Free();
+
+            if (clientA != clientB)
+            {
+                bodyA.Inhabit(clientB);
+                bodyB.Inhabit(clientA);
             }
+            else bodyB.Inhabit(clientA);
         }
 
         private void HandleClientDisconnected(ulong clientId)
@@ -57,7 +70,7 @@ namespace DefaultNamespace
             if (_usedObjects.ContainsKey(clientId))
             {
                 var body = _usedObjects[clientId];
-                body.RemoveOwnership();
+                body.Free();
                 _availableObjects.Enqueue(body);
                 _usedObjects.Remove(clientId);
             }
@@ -69,14 +82,8 @@ namespace DefaultNamespace
             if (_availableObjects.Count > 0)
             {
                 var body = _availableObjects.Dequeue();
-                body.GetComponent<NetworkedPlayer>().IsHostOwned = IsHost;
-                body.ChangeOwnership(clientId);
+                body.Inhabit(clientId);
                 _usedObjects.Add(clientId, body);
-
-                if (IsHost)
-                {
-                    body.GetComponent<NetworkedPlayer>().OnGainedOwnership();
-                }
             }
         }
     }
