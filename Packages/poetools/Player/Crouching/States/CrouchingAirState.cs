@@ -33,13 +33,13 @@ namespace poetools.player.Player.Crouching.States
             {
                 if (Parent.HeadRoom.CurrentColliders.Count == 0)
                 {
-                    var amount = Vector3.down * (Parent.Settings.standingHeight - Parent.Settings.crouchHeight);
+                    var amount = -Parent.Parent.up * (Parent.Settings.standingHeight - Parent.Settings.crouchHeight);
                     Parent.Parent.transform.position += amount;
                     Parent.SteadyBasePosition -= amount;
                     Parent.SmoothedCrouchPosition -= amount;
                     Parent.TransitionTo(Parent.Standing);
                 }
-                else if (Parent.CanStand && Parent.Cast(Vector3.down, float.PositiveInfinity, out RaycastHit info))
+                else if (Parent.CanStand && Parent.Cast(-Parent.Parent.up, float.PositiveInfinity, out RaycastHit info))
                 {
                     var origPosT = Parent.RawCameraTransform.position;
                     var origPosS = Parent.SteadyBasePosition;

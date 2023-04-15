@@ -192,7 +192,7 @@ namespace poetools.Core
                 if (!_previousColliders.Contains(currentCollider))
                 {
                     // this is new
-                    CollisionEnter?.Invoke(currentCollider.gameObject);
+                    // CollisionEnter?.Invoke(currentCollider.gameObject);
                     ColliderTriggerEnter?.Invoke(currentCollider);
                     colliderTriggerEnter.Invoke(currentCollider);
 
@@ -211,7 +211,7 @@ namespace poetools.Core
                 if (!_currentColliders.Contains(previousCollider) && previousCollider != null)
                 {
                     // this has been removed
-                    CollisionExit?.Invoke(previousCollider.gameObject);
+                    // CollisionExit?.Invoke(previousCollider.gameObject);
                     ColliderTriggerExit?.Invoke(previousCollider);
                     colliderTriggerExit.Invoke(previousCollider);
 

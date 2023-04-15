@@ -28,9 +28,11 @@ namespace poetools.Core.Abstraction
 
         private void FixedUpdate()
         {
-            _physicsComponent.Velocity = !groundCheck.IsGrounded || _physicsComponent.Velocity.y > 0
-                ? _physicsComponent.Velocity + downDirection * (amount * Time.deltaTime)
-                : _physicsComponent.Velocity + Vector3.down * idleGravity;
+
+            // _physicsComponent.Velocity = (groundCheck && !groundCheck.IsGrounded) || _physicsComponent.Velocity.y > 0
+            //     ? _physicsComponent.Velocity + downDirection * (amount * Time.deltaTime)
+            //     : _physicsComponent.Velocity + Vector3.down * idleGravity;
+            _physicsComponent.Velocity += downDirection * (amount * Time.deltaTime);
         }
     }
 }
