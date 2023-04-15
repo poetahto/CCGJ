@@ -1,5 +1,5 @@
-﻿using System;
-using InternalRealtimeCSG;
+﻿using InternalRealtimeCSG;
+using poetools.Core;
 using RealtimeCSG;
 using UnityEngine;
 
@@ -19,16 +19,19 @@ public static class PoetoolsRealtimeCsgHook
             {
                 foreach (var mesh in meshes)
                 {
-                    if (mesh.RenderSurfaceType == RenderSurfaceType.Collider && mesh.gameObject.activeSelf)
+                    if (mesh.RenderSurfaceType == RenderSurfaceType.Collider)
                         mesh.gameObject.SetActive(false);
 
-                    if (mesh.RenderSurfaceType == RenderSurfaceType.Normal)
+                    if (mesh.RenderSurfaceType == RenderSurfaceType.Normal && !mesh.TryGetComponent(out MeshCollider _))
                         mesh.gameObject.AddComponent<MeshCollider>();
 
                     if (mesh.RenderSurfaceType == RenderSurfaceType.Normal)
                     {
-                        if (_tagLookup.TryGetValue(mesh.RenderMaterial, out var tag))
-                            mesh.gameObject.AddTags(tag);
+                        foreach (var kvp in settings.materialToTag)
+                        {
+                            if (mesh.RenderMaterial == kvp.material)
+                                mesh.gameObject.AddTags(kvp.tags);
+                        }
                     }
                 }
             }
