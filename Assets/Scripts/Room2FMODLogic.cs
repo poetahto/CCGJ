@@ -1,16 +1,23 @@
-﻿using FMODUnity;
+﻿using System;
+using FMODUnity;
 using poetools.Core;
 using TriInspector;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace DefaultNamespace
 {
     public class Room2FMODLogic : TriggerEffect
     {
-        [SerializeField] private StudioEventEmitter music;
+        private StudioEventEmitter music;
 
         private bool _boxUnlocked;
         private string CurrentParameter => _boxUnlocked ? "HighPlucks" : "NormalPluck";
+
+        private void Start()
+        {
+            music = GameObject.Find("Music").GetComponent<StudioEventEmitter>();
+        }
 
         protected override void HandleCollisionEnter(GameObject obj)
         {

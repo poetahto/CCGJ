@@ -8,7 +8,7 @@ namespace DefaultNamespace
 {
     public class Room3WeirdHallway : MonoBehaviour
     {
-        public StudioEventEmitter music;
+        private StudioEventEmitter music;
         public TriggerEvents trigger;
         public Transform start;
         public Transform end;
@@ -16,6 +16,11 @@ namespace DefaultNamespace
         private bool _isWeird;
         public float fogMax = 0.02f;
         public float fogMin;
+
+        private void Start()
+        {
+            music = GameObject.Find("Music").GetComponent<StudioEventEmitter>();
+        }
 
         private void Update()
         {

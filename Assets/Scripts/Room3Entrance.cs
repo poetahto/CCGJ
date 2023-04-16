@@ -1,4 +1,5 @@
-﻿using FMODUnity;
+﻿using System;
+using FMODUnity;
 using poetools.Core;
 using Unity.Netcode;
 using UnityEngine;
@@ -8,13 +9,18 @@ namespace DefaultNamespace
     public class Room3Entrance : MonoBehaviour
     {
 
-        public StudioEventEmitter music;
+        private StudioEventEmitter music;
         public TriggerEvents trigger;
         public Transform start;
         public Transform end;
         private float _completion;
         public float fogMax = 0.02f;
         public float fogMin;
+
+        private void Start()
+        {
+            music = GameObject.Find("Music").GetComponent<StudioEventEmitter>();
+        }
 
         private void Update()
         {
