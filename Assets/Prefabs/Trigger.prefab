@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2755185476656500272}
+  - component: {fileID: 99349600870186217}
   - component: {fileID: 2234300017599221725}
   - component: {fileID: 7082131989902707784}
   - component: {fileID: 6786712792757320963}
-  - component: {fileID: 8190993113605405771}
+  - component: {fileID: 5523509709015243110}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -35,6 +36,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &99349600870186217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899454562380503444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1b2c118e614509acec3d5d2eadc851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterName: 
+  target: 0
 --- !u!33 &2234300017599221725
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -50,7 +65,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899454562380503444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -106,7 +121,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8190993113605405771
+--- !u!114 &5523509709015243110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,9 +130,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1899454562380503444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e10442ed9e0fa540a5a570e2e47403a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: 
-  Emitters: []
-  TriggerEvent: 0
+  showDebug: 0
+  excludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  excludeColliders: []
+  colliderTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  colliderTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  rigidbodyTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  rigidbodyTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  isOneShot: 0
+  guid: cc73c8e0-1cf6-4cfa-8564-aa7a08fa7d7d
