@@ -15,7 +15,7 @@ namespace DefaultNamespace
         {
             Target.TweenCancelAll();
             Target.TweenLocalScaleX(1, duration).SetEase(onEase);
-            Target.TweenLocalScaleY(1, duration).SetEase(onEase);
+            Target.TweenLocalScaleZ(1, duration).SetEase(onEase);
             yield return new WaitForSeconds(duration);
         }
 
@@ -23,7 +23,7 @@ namespace DefaultNamespace
         {
             Target.TweenCancelAll();
             Target.TweenLocalScaleX(0, duration).SetEase(offEase);
-            Target.TweenLocalScaleY(0, duration).SetEase(offEase);
+            Target.TweenLocalScaleZ(0, duration).SetEase(offEase);
             yield return new WaitForSeconds(duration);
         }
     }
