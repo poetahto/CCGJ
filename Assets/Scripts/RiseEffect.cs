@@ -2,12 +2,12 @@
 using System.Collections;
 using ElRaccoone.Tweens;
 using ElRaccoone.Tweens.Core;
+using TriInspector;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
-    [Serializable]
-    public class RiseEffect : IToggleEffect
+    public class RiseEffect : ToggleEffect
     {
         [SerializeField] private Transform offPoint;
         [SerializeField] private Transform onPoint;
@@ -15,18 +15,34 @@ namespace DefaultNamespace
         [SerializeField] private EaseType onEase;
         [SerializeField] private EaseType offEase;
 
-        public GameObject Target { get; set; }
+        private Vector3 _onPosition;
+        private Vector3 _offPosition;
 
-        public IEnumerator ToggleOn()
+        private void Awake()
         {
-            // yield return Target.TweenPosition(onPoint.position, duration).SetEase(onEase).Yield();
-            yield break;
+            _onPosition = onPoint.transform.position;
+            _offPosition = offPoint.transform.position;
         }
 
-        public IEnumerator ToggleOff()
+        public override IEnumerator ToggleOn()
         {
-            // yield return Target.TweenPosition(offPoint.position, duration).SetEase(offEase).Yield();
-            yield break;
+            Target.TweenCancelAll();
+            yield return Target.TweenPosition(_onPosition, duration).SetEase(onEase).Yield();
+        }
+
+        public override IEnumerator ToggleOff()
+        {
+            Target.TweenCancelAll();
+            yield return Target.TweenPosition(_offPosition, duration).SetEase(offEase).Yield();
+        }
+
+        [Button]
+        private void GenerateOnAndOffPoint()
+        {
+            onPoint = new GameObject("On Point").transform;
+            offPoint = new GameObject("Off Point").transform;
+            onPoint.SetParent(transform, false);
+            offPoint.SetParent(transform, false);
         }
     }
 }

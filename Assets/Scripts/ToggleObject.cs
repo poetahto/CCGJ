@@ -11,7 +11,7 @@ namespace DefaultNamespace
         public bool defaultValue;
 
         [SerializeReference]
-        public IToggleEffect toggleEffect;
+        public ToggleEffect toggleEffect;
 
         private void Awake()
         {
@@ -31,10 +31,6 @@ namespace DefaultNamespace
 
         private void HandleValueChanged(bool oldValue, bool newValue)
         {
-            // todo: replace w/ cooler effects
-            if (newValue)
-                gameObject.SetActive(true);
-
             StartCoroutine(newValue ? RunEffectOnCoroutine() : RunEffectOffCoroutine());
         }
 
@@ -42,30 +38,28 @@ namespace DefaultNamespace
 
         private IEnumerator RunEffectOnCoroutine()
         {
-            if (!_isAnimating)
-            {
-                _isAnimating = true;
-                // if (toggleEffect != null)
-                //     yield return toggleEffect.ToggleOn();
+            // if (!_isAnimating)
+            // {
+            //     _isAnimating = true;
+                if (toggleEffect != null)
+                    yield return toggleEffect.ToggleOn();
                 // else gameObject.SetActive(true);
-                yield return null;
-                _isAnimating = false;
-            }
+            //     yield return null;
+            //     _isAnimating = false;
+            // }
         }
 
         private IEnumerator RunEffectOffCoroutine()
         {
-            if (!_isAnimating)
-            {
-                _isAnimating = true;
-                // if (toggleEffect != null)
-                //     yield return toggleEffect.ToggleOff();
+            // if (!_isAnimating)
+            // {
+            //     _isAnimating = true;
+                if (toggleEffect != null)
+                    yield return toggleEffect.ToggleOff();
                 // else gameObject.SetActive(false);
-                yield return null;
-                _isAnimating = false;
-            }
-
-            gameObject.SetActive(false);
+                // yield return null;
+                // _isAnimating = false;
+            // }
         }
 
         public void ToggleOn()
@@ -83,6 +77,5 @@ namespace DefaultNamespace
         {
             isOn.Value = value;
         }
-
     }
 }
