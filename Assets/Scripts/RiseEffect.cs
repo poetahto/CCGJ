@@ -11,7 +11,7 @@ namespace DefaultNamespace
     {
         [SerializeField] private Transform offPoint;
         [SerializeField] private Transform onPoint;
-        [SerializeField] private float duration;
+        [SerializeField] private float duration = 1;
         [SerializeField] private EaseType onEase;
         [SerializeField] private EaseType offEase;
 

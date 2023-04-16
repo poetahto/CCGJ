@@ -629,6 +629,7 @@ GameObject:
   - component: {fileID: 2751614388713973314}
   - component: {fileID: 5796854961519510059}
   - component: {fileID: 3192821713150835624}
+  - component: {fileID: 2995348189879554631}
   m_Layer: 2
   m_Name: Inhabited Logic
   m_TagString: Untagged
@@ -835,6 +836,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 3523068928718581016}
+--- !u!114 &2995348189879554631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785962589927387332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1fb0e14503483f8f891ba01e8886c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactContainer: {fileID: 6509127536742836795}
+  pushRange: 3
 --- !u!1 &5257965528035612891
 GameObject:
   m_ObjectHideFlags: 0
