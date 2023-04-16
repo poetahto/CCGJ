@@ -16,7 +16,8 @@ namespace DefaultNamespace
 
         public override IEnumerator ToggleOn()
         {
-            Target.GetComponentInChildren<Collider>().enabled = true;
+            foreach (var col in Target.GetComponentsInChildren<Collider>())
+                col.enabled = true;
             Target.TweenCancelAll();
             if (scaleX)
                 Target.TweenLocalScaleX(1, duration).SetEase(onEase);
@@ -37,7 +38,9 @@ namespace DefaultNamespace
             if (scaleZ)
                 Target.TweenLocalScaleZ(0, duration).SetEase(offEase);
             yield return new WaitForSeconds(duration);
-            Target.GetComponentInChildren<Collider>().enabled = false;
+
+            foreach (var col in Target.GetComponentsInChildren<Collider>())
+                col.enabled = false;
         }
     }
 }
