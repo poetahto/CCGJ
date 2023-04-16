@@ -38,8 +38,8 @@ namespace DefaultNamespace
 
         public void Free()
         {
-            FreeClientRpc(new ClientRpcParams(){Send = new ClientRpcSendParams{TargetClientIds = new []{OwnerClientId}}});
             NetworkObject.RemoveOwnership();
+            FreeClientRpc(new ClientRpcParams(){Send = new ClientRpcSendParams{TargetClientIds = new []{OwnerClientId}}});
         }
 
         [ClientRpc]

@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Version: 1
-  SharedMesh: {fileID: 2801280105290011807}
+  SharedMesh: {fileID: 32}
   RenderMaterial: {fileID: 0}
   PhysicsMaterial: {fileID: 13400000, guid: 0c5fdfb44d6f19646a41a0720fbf751a, type: 2}
   RenderSurfaceType: 4
@@ -1158,7 +1158,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 14
-  m_Mesh: {fileID: 2801280105290011807}
+  m_Mesh: {fileID: 32}
 --- !u!1 &4104841266171134036
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,7 +3572,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &2801280105290011807
+--- !u!43 &32
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

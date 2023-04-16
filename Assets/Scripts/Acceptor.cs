@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FMODUnity;
 using poetools.Core;
 using poetools.Core.Abstraction;
 using Unity.Netcode;
@@ -13,6 +14,8 @@ namespace DefaultNamespace
         public List<NetworkObject> validObjects;
         public UnityEvent onAccept;
         public UnityEvent onRelease;
+        public EventReference acceptSfx;
+        public EventReference releaseSfx;
 
         public bool suckToCenter = true;
 
@@ -30,6 +33,10 @@ namespace DefaultNamespace
                         grav.enabled = false;
                 }
 
+                if (suckToCenter && netObj.TryGetComponent(out MovableObject mo))
+                    mo.HandleInteractStop(null);
+
+                RuntimeManager.PlayOneShotAttached(acceptSfx, gameObject);
                 AcceptedObject = netObj;
                 onAccept.Invoke();
             }
@@ -47,6 +54,7 @@ namespace DefaultNamespace
                         grav.enabled = true;
                 }
 
+                RuntimeManager.PlayOneShotAttached(releaseSfx, gameObject);
                 AcceptedObject = null;
                 onRelease.Invoke();
             }

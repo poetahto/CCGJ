@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8390253173913427515}
   - component: {fileID: 423152052725279248}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Accept SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67089545699514865}
   - component: {fileID: 7961058566720255497}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Release SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6432731370815145095}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 883173299835199033}
   - component: {fileID: 4727561348167489684}
   - component: {fileID: 6843646924680400932}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Acceptor Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,6 +237,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  acceptSfx:
+    Guid:
+      Data1: 1960892176
+      Data2: 1201477999
+      Data3: -1888728897
+      Data4: -2468695
+    Path: event:/grb
+  releaseSfx:
+    Guid:
+      Data1: 2121148462
+      Data2: 1276629141
+      Data3: 210104249
+      Data4: 807884191
+    Path: event:/drop
   suckToCenter: 1
   movementSpeed: 1
   maxSpeed: 1

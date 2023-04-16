@@ -30,9 +30,12 @@ namespace Integrations
             if (sceneEvent.ClientId == OwnerClientId && sceneEvent.SceneEventType == SceneEventType.LoadComplete)
             {
                 print("loaded");
-                var spawnPoint = FindObjectOfType<PlayerSpawnPosition>().transform;
-                transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
-                Physics.SyncTransforms();
+                var spawnPoint = FindObjectOfType<PlayerSpawnPosition>();
+                if (spawnPoint != null)
+                {
+                    transform.SetPositionAndRotation(spawnPoint.transform.position, spawnPoint.transform.rotation);
+                    Physics.SyncTransforms();
+                }
             }
         }
     }

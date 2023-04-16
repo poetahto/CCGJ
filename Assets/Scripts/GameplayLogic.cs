@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -20,6 +22,12 @@ namespace DefaultNamespace
 
                 NetworkManager.OnClientConnectedCallback += HandleClientConnected;
                 NetworkManager.OnClientDisconnectCallback += HandleClientDisconnected;
+
+                // if (!IsHost)
+                foreach (KeyValuePair<ulong, NetworkClient> client in NetworkManager.ConnectedClients)
+                {
+                    HandleClientConnected(client.Key);
+                }
             }
         }
 
@@ -53,15 +61,24 @@ namespace DefaultNamespace
             var clientA = bodyA.OwnerClientId;
             var clientB = bodyB.OwnerClientId;
 
-            bodyA.Free();
-            bodyB.Free();
+            HandleClientDisconnected(clientA);
+            HandleClientDisconnected(clientB);
+            // if (clientA != clientB)
+            // {
+                HandleClientConnected(clientA);
+                HandleClientConnected(clientB);
+            // }
+            // else HandleClientConnected(clientA);
 
-            if (clientA != clientB)
-            {
-                bodyA.Inhabit(clientB);
-                bodyB.Inhabit(clientA);
-            }
-            else bodyB.Inhabit(clientA);
+            // bodyA.Free();
+            // bodyB.Free();
+            //
+            // if (clientA != clientB)
+            // {
+            //     bodyA.Inhabit(clientB);
+            //     bodyB.Inhabit(clientA);
+            // }
+            // else bodyB.Inhabit(clientA);
         }
 
         private void HandleClientDisconnected(ulong clientId)
@@ -76,10 +93,12 @@ namespace DefaultNamespace
             }
         }
 
-        private void HandleClientConnected(ulong clientId)
+        private async void HandleClientConnected(ulong clientId)
         {
+            await Task.Yield();
+
             // only give them a body if we have one available.
-            if (_availableObjects.Count > 0)
+            if (_availableObjects.Count > 0 && !_usedObjects.ContainsKey(clientId))
             {
                 var body = _availableObjects.Dequeue();
                 body.Inhabit(clientId);
