@@ -16,6 +16,11 @@ namespace DefaultNamespace
         {
             if (obj.CompareTag("Player"))
             {
+                if (_boxUnlocked)
+                {
+                    music.SetParameter("Bass", 1);
+                }
+
                 music.SetParameter(CurrentParameter, 1);
             }
         }
