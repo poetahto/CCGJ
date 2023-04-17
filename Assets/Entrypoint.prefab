@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4880196400139826163}
   - component: {fileID: 6768989021028767503}
-  - component: {fileID: 7126960162828726764}
+  - component: {fileID: 5426635859050093880}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -165,7 +165,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &7126960162828726764
+--- !u!114 &5426635859050093880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
   LoadEvent: 1
   UnloadEvent: 2
   Banks:
-  - Master
+  - Build/Desktop/Master
   CollisionTag: 
   PreloadSamples: 0
 --- !u!1 &5956581035408085732

@@ -55,10 +55,5 @@ namespace DefaultNamespace
             player = null;
             return false;
         }
-
-        private void OnGUI()
-        {
-            GUILayout.Label($"{_completion}");
-        }
     }
 }

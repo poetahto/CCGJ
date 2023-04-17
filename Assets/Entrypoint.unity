@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5426635859050093880, guid: 2d406e5bc6413a049a4c92c795ebb21d, type: 3}
+      propertyPath: 'Banks.Array.data[0]'
+      value: Master
+      objectReference: {fileID: 0}
     - target: {fileID: 6667778541287270151, guid: 2d406e5bc6413a049a4c92c795ebb21d, type: 3}
       propertyPath: m_Name
       value: Entrypoint
