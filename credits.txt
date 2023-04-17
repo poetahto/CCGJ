@@ -4,13 +4,19 @@ A mind-boggling puzzle game meant to give each player a shift in perspective. ¿
 
 DISCLAIMER: If the servers are not working, it's because our Unity Relay surpassed the maximum amount of connections; we will implement a direct hosting option at some point. 
 
-Creators:
+Creators
 James Maron (chmilk)
 Daniel Walls (Poethato)
+
+Music written by Daniel Walls
 
 Special thanks to our testers!
 Clayton Hegemier
 Dayne Glover
 Jaycee Glover
+
+Shoutout to
+Aztec Game Lab at SDSU
+Ed Harrison (levels inspired by their music)
 
 Player model from https://app.gumroad.com/d/151df35d8294aef709ba34235b2cd04a
