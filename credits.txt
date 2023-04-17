@@ -1,0 +1,16 @@
+MULTIPLAYER: 2 PLAYERS ARE REQUIRED FOR THIS CO-OP GAME
+
+A mind-boggling puzzle game meant to give each player a shift in perspective. ¿puǝ ǝɥʇ oʇ ʇᴉ ǝʞɐɯ noʎ uɐƆ
+
+DISCLAIMER: If the servers are not working, it's because our Unity Relay surpassed the maximum amount of connections; we will implement a direct hosting option at some point. 
+
+Creators:
+James Maron (chmilk)
+Daniel Walls (Poethato)
+
+Special thanks to our testers!
+Clayton Hegemier
+Dayne Glover
+Jaycee Glover
+
+Player model from https://app.gumroad.com/d/151df35d8294aef709ba34235b2cd04a
