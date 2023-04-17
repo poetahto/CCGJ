@@ -12,18 +12,19 @@ namespace DefaultNamespace
         public CanvasGroup imageGroup;
         public CanvasGroup textGroup;
         public Sprite sprite;
+        public Image spriteImage;
         [TextArea]
         public string message;
         public float duration = 0.5f;
 
-        private bool _showingImage;
+        private bool _showingImage = true;
 
         private void Awake()
         {
             textGroup.alpha = 0;
             imageGroup.alpha = 1;
             GetComponentInChildren<TMP_Text>().text = message;
-            GetComponentInChildren<Image>().sprite = sprite;
+            spriteImage.sprite = sprite;
         }
 
         public void HandleInteractStart(GameObject grabber)
@@ -38,6 +39,7 @@ namespace DefaultNamespace
         {
             _showingImage = true;
             textGroup.TweenCancelAll();
+            imageGroup.TweenCancelAll();
             textGroup.TweenCanvasGroupAlpha(0, duration).SetOnComplete(() => imageGroup.TweenCanvasGroupAlpha(1, duration));
         }
 
@@ -45,7 +47,8 @@ namespace DefaultNamespace
         {
             _showingImage = false;
             textGroup.TweenCancelAll();
-            textGroup.TweenCanvasGroupAlpha(1, duration).SetOnComplete(() => imageGroup.TweenCanvasGroupAlpha(0, duration));
+            imageGroup.TweenCancelAll();
+            imageGroup.TweenCanvasGroupAlpha(0, duration).SetOnComplete(() => textGroup.TweenCanvasGroupAlpha(1, duration));
         }
 
         public void HandleInteractStop(GameObject grabber)
