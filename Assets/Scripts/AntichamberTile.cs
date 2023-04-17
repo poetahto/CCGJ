@@ -1,6 +1,9 @@
-﻿using ElRaccoone.Tweens;
+﻿using System;
+using ElRaccoone.Tweens;
 using poetools.player.Player.Interaction;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
@@ -8,9 +11,20 @@ namespace DefaultNamespace
     {
         public CanvasGroup imageGroup;
         public CanvasGroup textGroup;
+        public Sprite sprite;
+        [TextArea]
+        public string message;
         public float duration = 0.5f;
 
         private bool _showingImage;
+
+        private void Awake()
+        {
+            textGroup.alpha = 0;
+            imageGroup.alpha = 1;
+            GetComponentInChildren<TMP_Text>().text = message;
+            GetComponentInChildren<Image>().sprite = sprite;
+        }
 
         public void HandleInteractStart(GameObject grabber)
         {
@@ -22,13 +36,16 @@ namespace DefaultNamespace
 
         private void ShowImage()
         {
-
+            textGroup.TweenCancelAll();
+            textGroup.TweenCanvasGroupAlpha(0, duration);
+            imageGroup.TweenCanvasGroupAlpha(1, duration);
         }
 
         private void ShowText()
         {
             textGroup.TweenCancelAll();
             textGroup.TweenCanvasGroupAlpha(1, duration);
+            imageGroup.TweenCanvasGroupAlpha(0, duration);
         }
 
         public void HandleInteractStop(GameObject grabber)
