@@ -36,16 +36,16 @@ namespace DefaultNamespace
 
         private void ShowImage()
         {
+            _showingImage = true;
             textGroup.TweenCancelAll();
-            textGroup.TweenCanvasGroupAlpha(0, duration);
-            imageGroup.TweenCanvasGroupAlpha(1, duration);
+            textGroup.TweenCanvasGroupAlpha(0, duration).SetOnComplete(() => imageGroup.TweenCanvasGroupAlpha(1, duration));
         }
 
         private void ShowText()
         {
+            _showingImage = false;
             textGroup.TweenCancelAll();
-            textGroup.TweenCanvasGroupAlpha(1, duration);
-            imageGroup.TweenCanvasGroupAlpha(0, duration);
+            textGroup.TweenCanvasGroupAlpha(1, duration).SetOnComplete(() => imageGroup.TweenCanvasGroupAlpha(0, duration));
         }
 
         public void HandleInteractStop(GameObject grabber)
