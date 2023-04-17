@@ -37,17 +37,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 1
     - _Density: 9.83
-    - _Intensity: 0.12
-    - _Power: 1.92
+    - _Intensity: 2.4
+    - _Power: 194.56
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 1.94
+    - _Scale: 7.94
     - _Smoothness: 0.56
-    - _Speed: 0.1
+    - _Speed: 0.05
+    - _e1: -0.67
+    - _e2: 1.77
     m_Colors:
-    - _Color: {r: 1, g: 0.33966336, b: 0.2980392, a: 1}
-    - _Highlihg: {r: 0.9811321, g: 0.30081883, b: 0.30081883, a: 1}
+    - _Color: {r: 0, g: 0.020182133, b: 1, a: 1}
+    - _Highlihg: {r: 0.27058828, g: 0.4345462, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7611858962674080875
 MonoBehaviour:
